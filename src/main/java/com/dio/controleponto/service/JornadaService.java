@@ -30,8 +30,19 @@ public class JornadaService {
         return jornadaRepository.findById(idJornada);
     }
 
-    public JornadaTrabalho update(JornadaTrabalho jornadaTrabalho) {
-        return jornadaRepository.save(jornadaTrabalho);
+    public Optional<JornadaTrabalho> update(JornadaTrabalho jornadaTrabalho) {
+        Optional<JornadaTrabalho> jornadaOptional = jornadaRepository.findById(jornadaTrabalho.getId());
+        JornadaTrabalho jornadaUpdate;
+
+        if(jornadaOptional.isPresent()) {
+            jornadaUpdate = jornadaOptional.get();
+            jornadaUpdate.setDescricao(jornadaTrabalho.getDescricao());
+            jornadaRepository.save(jornadaUpdate);
+            return Optional.of(jornadaUpdate);
+        } else {
+            return null;
+        }
+
     }
 
     public void deleteJornada(long idJornada) {

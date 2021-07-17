@@ -31,4 +31,14 @@ public class JornadaTrabalhoController {
         return  jornadaService.getById(idJornada);
     }
 
+    @DeleteMapping("/{idJornada}")
+    public void delete(@PathVariable("idJornada") long idJornada) {
+        jornadaService.deleteJornada(idJornada);
+    }
+
+    @PutMapping
+    public Optional<JornadaTrabalho> update(@RequestBody JornadaTrabalho jornadaTrabalho) {
+        return jornadaService.update(jornadaTrabalho);
+    }
+
 }
