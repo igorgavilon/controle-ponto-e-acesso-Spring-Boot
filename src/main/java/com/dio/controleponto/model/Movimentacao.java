@@ -22,7 +22,7 @@ public class Movimentacao {
     @EqualsAndHashCode
     @Embeddable
     public class MovimentacaoId implements Serializable {
-        private long idMovimento;
+        private long idMovimentacao;
         private long idUsuario;
     }
 
