@@ -2,18 +2,14 @@ package com.dio.controleponto.model;
 
 import lombok.*;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Localidade {
+public class Ocorrencia {
     private long id;
-    @ManyToOne
-    private NivelAcesso nivelAcesso;
+    private String nome;
     private String descricao;
 }
