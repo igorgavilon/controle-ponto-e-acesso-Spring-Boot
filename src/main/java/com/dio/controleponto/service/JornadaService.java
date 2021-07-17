@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JornadaService {
@@ -25,7 +26,15 @@ public class JornadaService {
         return jornadaRepository.findAll();
     }
 
-    public JornadaTrabalho getById(long idJornada) throws Exception{
-        return jornadaRepository.findById(idJornada).orElseThrow(() -> new Exception("jornada não encontrada."));
+    public Optional<JornadaTrabalho> getById(long idJornada) {
+        return jornadaRepository.findById(idJornada);
+    }
+
+    public JornadaTrabalho update(JornadaTrabalho jornadaTrabalho) {
+        return jornadaRepository.save(jornadaTrabalho);
+    }
+
+    public void deleteJornada(long idJornada) {
+        jornadaRepository.deleteById(idJornada);
     }
 }

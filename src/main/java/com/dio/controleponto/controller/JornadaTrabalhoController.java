@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/jornada")
@@ -26,8 +27,8 @@ public class JornadaTrabalhoController {
     }
 
     @GetMapping("/{idJornada}")
-    public ResponseEntity<JornadaTrabalho>  getJornadaByID(@PathVariable("idJornada") long idJornada) throws Exception{
-        return  ResponseEntity.ok(jornadaService.getById(idJornada));
+    public Optional<JornadaTrabalho> getJornadaByID(@PathVariable("idJornada") long idJornada) {
+        return  jornadaService.getById(idJornada);
     }
 
 }
